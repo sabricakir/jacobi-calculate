@@ -23,15 +23,15 @@ public class Jacobi {
         this.x3FirstValue = x3FirstValue;
     }
 
-    double x1Hesapla(double x1, double x2, double x3) {
+    double calculateX1(double x1, double x2, double x3) {
         return (1 / 5.0) * (2 + x2 - 2 * x3);
     }
 
-    double x2Hesapla(double x1, double x2, double x3) {
+    double calculateX2(double x1, double x2, double x3) {
         return (1 / 5.0) * (-2 + x1 + 2 * x3);
     }
 
-    double x3Hesapla(double x1, double x2, double x3) {
+    double calculateX3(double x1, double x2, double x3) {
         return (1 / 4.0) * (4 + 2 * x1 - x2);
     }
 
@@ -39,9 +39,9 @@ public class Jacobi {
         x1FirstValue = x2FirstValue = x3FirstValue = 0;
         int i = 1;
         while (true) {
-            x1 = x1Hesapla(x1FirstValue, x2FirstValue, x3FirstValue);
-            x2 = x2Hesapla(x1FirstValue, x2FirstValue, x3FirstValue);
-            x3 = x3Hesapla(x1FirstValue, x2FirstValue, x3FirstValue);
+            x1 = calculateX1(x1FirstValue, x2FirstValue, x3FirstValue);
+            x2 = calculateX2(x1FirstValue, x2FirstValue, x3FirstValue);
+            x3 = calculateX3(x1FirstValue, x2FirstValue, x3FirstValue);
             System.out.println(i + ".iteration:\n" + "x1: " + frm.format(x1) + "\t\t\t\t" + "x2: " + frm.format(x2) + "\t\t\t\t" + " x3: " + frm.format(x3));
             if ((Math.abs(x1 - x1FirstValue)) <= td && (Math.abs(x2 - x2FirstValue)) <= td && (Math.abs(x3 - x3FirstValue)) <= td) {
                 break;
